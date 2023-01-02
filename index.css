@@ -1,3 +1,24 @@
 body{
     background-color: aliceblue;
+    font-size: 120%;
+
+}
+input{
+    height: 30px;
+    min-width: 300px;
+    margin-bottom: 20px;
+    font-size: 120%;
+
+}
+button{
+    outline: none;
+    cursor: pointer;
+    height: 30px;
+    font-size: 110%;
+    
+}
+button:hover{
+    background-color: rgb(226, 43, 226);
+
+    
 }

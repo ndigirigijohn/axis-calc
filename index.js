@@ -17,18 +17,27 @@ function calculate() {
     // Get the equation from the input field
     let equation = document.getElementById("equation").value.replaceAll(/\s/g,'');
     //check if includes y
+
     if(!equation.includes("y=")){
         equation = "y="+equation;
     }
 
-    const regex = /^y\s*=\s*([+-]?\d*x\^2)\s*([+-]?\d*x)?\s*([+-]?\d*)$/
-    console.log("eq",equation)
-    console.log("test",regex.test(equation))
+    regex = /^y\s*=\s*([+-]?\d*x\^2)\s*([+-]?\d*x)?\s*([+-]?\d*)$/
+    console.log("eq1",equation)
+    if(!regex.test(equation)){
+        equation=convertEquation(equation);
+        equation = "y="+equation;
+
+
+        console.log("eq2",equation)
+
+    }
+    console.log("final",regex.test(equation))
+    equation=equation.replaceAll(/\s/g,'')
 
     // Calculate the axis of symmetry
     var a = 0, b = 0, c = 0;
     var matches = equation.match(regex);
-    console.log(matches)
     if (matches) {
       a = getCoefficient(matches[1]);
       b = getCoefficient(matches[2]);
@@ -78,4 +87,18 @@ function calculate() {
   return parseInt(term)||0;
   }
 
+    
+    
+//convert the equation to the form y=ax^2+bx+c
+function convertEquation(equation){
+  
 
+    let a=equation.split('x')[0].split('(')[1]||1;
+
+    let b=equation.split('x')[1].split(')')[0];
+
+    let c=equation.split('^')[1].split('2')[1]||0;
+
+    return `${a*a}x^2${eval(2*a*b)>0?'+':''}${eval(2*a*b)}x+${eval((b*b)+c)}`;
+
+}
