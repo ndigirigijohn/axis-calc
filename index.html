@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Axis of Symmetry Calculator</title>
+  <link rel="stylesheet" type="text/css" href="./index.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        renderActions: {
+          addMenu: [],
+          checkLoading: []
+        }
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>Axis of Symmetry Calculator</h1>
+    <p>Enter an equation in the form of <code>y = mx + b</code> and click <code>Calculate</code> to find the axis of symmetry.</p>
+  <form>
+    <label for="equation">Enter an equation:</label><br>
+    <input placeholder="y = mx + b" type="text" id="equation" name="equation"><br>
+    <button type="button" id="calculate">Calculate</button>
+    <button type="button" id="reset">Reset</button>
+  </form>
+  <br>
+  <div id="result">
+
+
+  </div>
+
+</body>
+<script src="./index.js"></script>
+</html>
