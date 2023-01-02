@@ -16,6 +16,7 @@ function reset() {
 function calculate() {
     // Get the equation from the input field
     let equation = document.getElementById("equation").value.replaceAll(/\s/g,'');
+    let equation1=''
     //check if includes y
 
     if(!equation.includes("y=")){
@@ -25,6 +26,7 @@ function calculate() {
     regex = /^y\s*=\s*([+-]?\d*x\^2)\s*([+-]?\d*x)?\s*([+-]?\d*)$/
     console.log("eq1",equation)
     if(!regex.test(equation)){
+        equation1=equation;
         equation=convertEquation(equation);
         equation = "y="+equation;
 
@@ -51,7 +53,13 @@ function calculate() {
     document.getElementById('result').innerHTML=`
     <div>
     <h3>Solution</h3>
+    <p>From your equation: </p>
+
+        <p>${equation1}</p>
+
+    <p>${equation}</p>
     <p>Axis of symmetry is calculated as:</p>
+
 
             <p>x=-b / (2 × a);</p>
     <p>From your equation: </p>
@@ -99,6 +107,6 @@ function convertEquation(equation){
 
     let c=equation.split('^')[1].split('2')[1]||0;
 
-    return `${a*a}x^2${eval(2*a*b)>0?'+':''}${eval(2*a*b)}x+${eval((b*b)+c)}`;
+    return `${a*a}x^2${eval(2*a*b)>0?'+':''}${eval(2*a*b)}x${eval((b*b)+c)>0?'+':''}${eval((b*b)+c)}`;
 
 }
