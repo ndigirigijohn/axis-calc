@@ -49,6 +49,7 @@ function calculate() {
     if(isNaN(axis)){
         axis="Not a Number"
     }
+    axis=toFraction(axis);
     //show the user how axis of symmetry is calculated step by step
     document.getElementById('result').innerHTML=`
     <div>
@@ -110,3 +111,51 @@ function convertEquation(equation){
     return `${a*a}x^2${eval(2*a*b)>0?'+':''}${eval(2*a*b)}x${eval((b*b)+c)>0?'+':''}${eval((b*b)+c)}`;
 
 }
+
+
+
+function toFraction(float) {
+    // Check if the number is an integer
+    if (Number.isInteger(float)) {
+      return `${float}`;
+    }
+  
+    // Check if the number is a terminating decimal
+    let digits = (float.toString().split('.')[1] || '').length;
+    let denominator = Math.pow(10, digits);
+    let numerator = float * denominator;
+    if (Number.isInteger(numerator)) {
+      let whole = Math.trunc(numerator / denominator);
+      numerator = numerator % denominator;
+      if (whole === 0) {
+        if(denominator>1000){
+            return float;
+        }
+        return `${toSimplestForm(numerator, denominator)}`;
+      } else {
+        if(denominator>1000){
+            return float;
+        }
+        return `${whole} ${toSimplestForm(Math.abs(numerator), Math.abs(denominator))}`;
+      }
+    }
+  
+    // The number is not a terminating decimal, so we return it as is
+    return float;
+  }
+
+  function toSimplestForm(numerator, denominator) {
+    const gcd = getGCD(numerator, denominator);
+    numerator /= gcd;
+    denominator /= gcd;
+    return numerator + '/' + denominator;
+  }
+  
+  // Helper function to get the greatest common divisor of two numbers
+  function getGCD(a, b) {
+    if (b === 0) {
+      return a;
+    }
+    return getGCD(b, a % b);
+  }
+  
