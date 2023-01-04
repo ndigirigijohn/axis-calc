@@ -1,5 +1,6 @@
 //calculate the axis of symmetry of a quadratic function
 //y = ax^2 + bx + c
+const mathStyle='font-family: Times New Roman, serif;font-style:italic;font-weight: bold;'
 
 //calculate button
 document.getElementById("calculate").addEventListener("click", calculate);
@@ -56,19 +57,19 @@ function calculate() {
     <h3>Solution</h3>
     <p>From your equation: </p>
 
-        <p>${equation1}</p>
+        <p style="${mathStyle}">${equation1}</p>
 
-    <p>${equation}</p>
+    <p style="${mathStyle}">${equation}</p>
     <p>Axis of symmetry is calculated as:</p>
 
 
-            <p>x=-b / (2 × a);</p>
+            <p style="${mathStyle}">x=-b / (2 × a);</p>
     <p>From your equation: </p>
-    <p>a=${a}, b=${b}, c=${c} </p>
+    <p style="${mathStyle}">a=${a}, b=${b}, c=${c} </p>
 
-    <p>x=-${b} / (2 × ${a});</p>
+    <p style="${mathStyle}">x=-${b} / (2 × ${a});</p>
 
-    <p><strong>x=${axis}</p>
+    <p style="${mathStyle}"><strong>x=${axis}</p>
     </div>
 
     
